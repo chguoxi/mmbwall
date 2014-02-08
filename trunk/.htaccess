@@ -1,0 +1,19 @@
+# Various rewrite rules.
+<IfModule mod_rewrite.c>
+	RewriteEngine on
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^home(\.html)*$ / [L,R=301]
+
+	RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^index\.php$ / [L,R=301]
+
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond $1 !^(index\.php|images|theme|robots\.txt)
+	RewriteRule ^(.*)$ /index.php/$1 [L]
+</IfModule>
+
+# $Id: .htaccess,v 1.90.2.4 2009/12/07 12:00:40 goba Exp $
